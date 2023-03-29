@@ -42,12 +42,12 @@
 
         </dl>
         <p>Colors:</p>
-        <ul>
+        <ol>
             @foreach (var color in ViewBag.chkclr)
             {
                 <li>@color</li>
             }
-        </ul>
+        </ol>
     </div>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |

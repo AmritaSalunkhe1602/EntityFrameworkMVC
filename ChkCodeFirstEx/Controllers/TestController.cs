@@ -10,7 +10,7 @@ namespace ChkCodeFirstEx.Controllers
     public class TestController : Controller
     {
         CompanyContext cc = new CompanyContext();
-        // GET: Test
+        
         public ActionResult Index()
         {
             var v = from t in cc.Products
