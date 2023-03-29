@@ -1,0 +1,17 @@
+﻿@model IEnumerable<ChkCodeFirstEx.Models.ChkClrVM>
+    @{ Layout = null;}
+<div style="height:100px;width:300px;overflow:auto;">
+    @foreach (var temp in Model)
+    {
+        if (temp.ISelected)
+        {
+            <input name="chk" type="checkbox" checked="checked" value="@temp.Value" /> @temp.Text <br />
+        }
+        else
+        {
+            <input name="chk" type="checkbox" value="@temp.Value" /> @temp.Text <br />
+        }
+
+    }
+</div>
+

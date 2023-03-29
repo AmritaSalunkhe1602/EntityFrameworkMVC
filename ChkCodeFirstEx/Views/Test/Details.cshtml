@@ -1,0 +1,57 @@
+﻿@model ChkCodeFirstEx.Models.Product
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Product</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MfgName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MfgName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+        </dl>
+        <p>Colors:</p>
+        <ul>
+            @foreach (var color in ViewBag.chkclr)
+            {
+                <li>@color</li>
+            }
+        </ul>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

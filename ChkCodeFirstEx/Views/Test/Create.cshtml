@@ -1,0 +1,52 @@
+﻿@model ChkCodeFirstEx.Models.Product
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @using (Html.BeginForm())
+                {  <div>
+                        @Html.LabelFor(p => p.ProductName)
+                        <div>
+                            @Html.EditorFor(p => p.ProductName)
+                        </div>
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.MfgName)
+                        <div>
+                            @Html.EditorFor(p => p.MfgName)
+                        </div>
+                    </div>
+                    <div>
+                        @Html.LabelFor(p => p.Price)
+                        <div>
+                            @Html.EditorFor(p => p.Price)
+                        </div>
+                    </div>
+                    <div>
+                        @Html.Label("Select Color:")
+                        <div>
+                            @Html.Action("GetCheckBoxes")
+                        </div>
+                    </div>
+                    <div>
+                        <input type="submit" value="Save" class="btn btn-success"/>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

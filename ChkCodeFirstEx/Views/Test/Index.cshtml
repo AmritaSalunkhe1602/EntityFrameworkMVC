@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ChkCodeFirstEx.Models.ProdVM>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+<body>
+    <div class="container"> 
+        <div class="row">
+            <div class="col-md-12">
+                @Html.ActionLink("Create New", "Create", null, new { @class="btn btn-success"})
+                <table class="table table-bordered">
+                    <tr>
+                        <th>@Html.DisplayNameFor(p=>p.ProductId)</th>
+                        <th>@Html.DisplayNameFor(p=>p.ProductName)</th>
+                        <th>@Html.DisplayNameFor(p=>p.Count)</th>
+                    </tr>
+                    @foreach(var temp in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(a=>temp.ProductId)</td>
+                    <td>@Html.DisplayFor(a=>temp.ProductName)</td>
+                    <td>@Html.DisplayFor(a=>temp.Count)</td>
+                    <td>@Html.ActionLink("Edit","Edit",new { id=temp.ProductId},new { @class="btn btn-primary"})</td>
+                    <td>@Html.ActionLink("Details","Details",new { id=temp.ProductId},new { @class="btn btn-primary"})</td>
+                    <td>@Html.ActionLink("Delete","Delete",new { id=temp.ProductId},new { @class="btn btn-danger"})</td>
+                </tr>
+            }
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
