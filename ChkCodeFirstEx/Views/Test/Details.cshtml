@@ -10,6 +10,13 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Details</title>
+    <script>
+        $(function () {
+            $("#a").click(function () {
+                @Html.Action("GetProduct", new { cid = Model.ProductColors[0].ColorId})
+            });
+        });
+    </script>
 </head>
 <body>
     <div>
@@ -45,7 +52,8 @@
         <ol>
             @foreach (var color in ViewBag.chkclr)
             {
-                <li>@color</li>
+                @*<li>@color</li>*@
+                <li><a href="@color" id="a">@color</a></li>
             }
         </ol>
     </div>

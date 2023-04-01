@@ -1,0 +1,28 @@
+﻿@model ChkCodeFirstEx.Models.Color
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetProduct</title>
+</head>
+<body>
+    <div>
+        @Html.HiddenFor(x=>x.ColorId)
+        @Html.DisplayNameFor(x => x.ColorName)
+    </div>
+    <div>
+        <ol>
+            @foreach (var prod in ViewBag.productlist)
+            {
+                <li>@prod</li>
+            }
+        </ol>
+    </div>
+</body>
+</html>

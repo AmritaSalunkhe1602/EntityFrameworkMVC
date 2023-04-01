@@ -55,16 +55,18 @@ namespace ChkCodeFirstEx.Controllers
                     };
             return View("_ChkColor", v.ToList());
         }
-        public ActionResult GetChecked(Int64 id)
+        [ChildActionOnly]
+        public ActionResult GetChecked(Int64 pid)
         {
-            var rec = this.cc.Products.Find(id);
-            var c = rec.ProductColors.Select(a => a.ColorId).ToList();
+            //var rec = this.cc.Products.Find(pid);
+            //var c = rec.ProductColors.Select(a => a.ColorId).ToList();
             var v = from t in cc.Colors
                     select new ChkClrVM
                     {
                         Value = t.ColorId,
                         Text = t.ColorName,
-                        ISelected = c.Contains(t.ColorId)
+                        // ISelected = c.Contains(t.ColorId)
+                        ISelected = this.cc.ProductColors.Any(a => a.ColorId == t.ColorId && a.ProductId == pid)
                     };
             ViewBag.Chk = v.ToList();
             return View("_ChkColor", v.ToList());
@@ -116,14 +118,21 @@ namespace ChkCodeFirstEx.Controllers
         }
 
         [HttpGet]
-        public ActionResult Details(Int64 id)
+        public ActionResult Details(Int64? id)
         {
              var rec = cc.Products.Find(id);
             var clr = rec.ProductColors.Select(p => p.Color.ColorName).ToList();
             ViewBag.chkclr = clr;
             return View(rec);
         }
-
+        [ChildActionOnly]
+        public ActionResult GetProduct(Int64 cid)
+        {
+            var rec = cc.Colors.Find(cid);
+            var p = rec.ProductColors.Select(z => z.Product.ProductName).ToList();
+            ViewBag.productlist = p;
+            return View(rec);
+        }
     }
 }
 
